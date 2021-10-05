@@ -67,7 +67,7 @@ resource "aws_route_table_association" "public-subnet-2-route-table-association"
 
 resource "aws_subnet" "private-subnet-1" {
   vpc_id     = aws_vpc.vpc.id
-  cidr_block = "${var.public-subnet-1-cidr}"
+  cidr_block = "${var.private-subnet-1-cidr}"
   availability_zone = "us-east-1c"
   map_public_ip_on_launch = false
 
@@ -78,8 +78,8 @@ resource "aws_subnet" "private-subnet-1" {
 
 resource "aws_subnet" "private-subnet-2" {
   vpc_id     = aws_vpc.vpc.id
-  cidr_block = "${var.public-subnet-2-cidr}"
-  availability_zone = "us-east-1c"
+  cidr_block = "${var.private-subnet-2-cidr}"
+  availability_zone = "us-east-1d"
   map_public_ip_on_launch = false
 
   tags = {
