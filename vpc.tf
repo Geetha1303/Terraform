@@ -1,3 +1,28 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+
+  required_version = ">= 0.14.9"
+}
+
+provider "aws" {
+  profile = "default"
+  region  = "us-west-2"
+}
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-830c94e3"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "ExampleAppServerInstance"
+  }
+}
+
 resource "aws_vpc" "vpc" {
   cidr_block       = "${var.vpc-cidr}"
   instance_tenancy = "default"
@@ -47,7 +72,7 @@ resource "aws_route_table" "public-route-table" {
     {
       cidr_block = "0.0.0.0/0"
       //CRT uses this IGW to reach internet
-      gateway_id = "${aws_internet_gateway.internet-gateway.id}"
+      gateway_id = aws_internet_gateway.internet-gateway.id
     }
   ]
 

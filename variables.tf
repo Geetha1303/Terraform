@@ -1,8 +1,3 @@
-variable "region" {
-  description = "AWS Deployment region.."
-  default = "us-east-1"
-}
-
 variable "vpc-cidr" {
   description = "Value of the VPC CIDR block"
   type        = string
