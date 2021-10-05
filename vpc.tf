@@ -8,7 +8,7 @@ resource "aws_vpc" "vpc" {
   }
 }
 
-resource "aws_internet_gateway" "gw" {
+resource "aws_internet_gateway" "internet-gateway" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
@@ -45,7 +45,7 @@ resource "aws_route_table" "public-route-table" {
   route = [
     {
       cidr_block = "0.0.0.0/0"
-      gateway_id = aws_internet_gateway.gw.id
+      gateway_id = aws_internet_gateway.internet-gateway.id
     }
   ]
 
