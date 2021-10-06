@@ -6,6 +6,11 @@ terraform {
   #  name = "sample"
   #  }
   #}
+  backend "s3" {
+    bucket = "terraform-bucket-for-tf.state"
+    key    = "vpc/terraform.tfstate"
+    region = "us-east-1"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
