@@ -58,7 +58,7 @@ resource "aws_subnet" "public-subnet-2" {
 resource "aws_subnet" "public-subnet-3" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = "${var.public-subnet-3-cidr}"
-  availability_zone = "us-east-1e"
+  availability_zone = "us-east-1c"
   map_public_ip_on_launch = true
 
   tags = {
@@ -116,7 +116,7 @@ resource "aws_nat_gateway" "Nat-gateway" {
 resource "aws_subnet" "private-subnet-1" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = "${var.private-subnet-1-cidr}"
-  availability_zone = "us-east-1c"
+  availability_zone = "us-east-1a"
   map_public_ip_on_launch = false
 
   tags = {
@@ -127,7 +127,7 @@ resource "aws_subnet" "private-subnet-1" {
 resource "aws_subnet" "private-subnet-2" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = "${var.private-subnet-2-cidr}"
-  availability_zone = "us-east-1d"
+  availability_zone = "us-east-1b"
   map_public_ip_on_launch = false
 
   tags = {
@@ -138,7 +138,7 @@ resource "aws_subnet" "private-subnet-2" {
 resource "aws_subnet" "private-subnet-3" {
   vpc_id     = aws_vpc.vpc.id
   cidr_block = "${var.private-subnet-3-cidr}"
-  availability_zone = "us-east-1f"
+  availability_zone = "us-east-1c"
   map_public_ip_on_launch = false
 
   tags = {
@@ -149,7 +149,7 @@ resource "aws_route_table" "private-route-table" {
   vpc_id = aws_vpc.vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block = "10.0.4.0/24"
     //CRT uses this IGW to reach internet
     gateway_id = aws_nat_gateway.Nat-gateway.id
   }
