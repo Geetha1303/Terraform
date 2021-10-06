@@ -1,11 +1,11 @@
 terraform {
-  backend "remote" {
-    organization = "geetha-1303"
+  #backend "remote" {
+   # organization = "geetha-1303"
 
-    workspaces {
-      name = "sample"
-    }
-  }
+   # workspaces {
+    #  name = "sample"
+  #  }
+  #}
   required_providers {
     aws = {
       source  = "hashicorp/aws"
