@@ -12,8 +12,8 @@ terraform {
 provider "aws" {
   profile = "default"
   region  = "us-east-1"
-  access_key = var.Access_key
-  secret_key = var.Secret_Access_key
+  AWS_ACCESS_KEY_ID = var.Access_key
+  AWS_SECRET_ACCESS_KEY = var.Secret_Access_key
  # shared_credentials_file = "$HOME/.aws/credentials"
 }
 
